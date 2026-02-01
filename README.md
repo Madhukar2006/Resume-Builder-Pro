@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Resume Builder Pro
 
 A modern, clean, and user-friendly web application to create professional resumes effortlessly. Designed for students and professionals who want fast, elegant, and customizable resumes.
