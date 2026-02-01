@@ -1,73 +1,43 @@
-# React + TypeScript + Vite
+<<<<<<< HEAD
+# Resume Builder Pro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, clean, and user-friendly web application to create professional resumes effortlessly. Designed for students and professionals who want fast, elegant, and customizable resumes.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+Sooooon
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- Easy resume creation with structured sections  
+- Clean and modern UI  
+- Live preview while editing  
+- Fully responsive (mobile-first design)  
+- Fast and lightweight  
+- Export resume in PDF format  
+- Beginner friendly interface  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- HTML  
+- CSS  
+- JavaScript  
+- React (if applicable)  
+- Tailwind CSS (if applicable)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📌 Usage
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Fill in your personal details, education, skills, and experience. Preview your resume in real time and download it when ready.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🎯 Purpose
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+This project was built as an academic and skill-development project to understand frontend development, UI design, and real-world application flow.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🤝 Contributing
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Contributions are welcome. Feel free to fork the repository and submit a pull request.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 👨‍💻 Author
+
+**Madhukar**  
+B.Tech CSE Student  
+Aspiring Software Engineer
