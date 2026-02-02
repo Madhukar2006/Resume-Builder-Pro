@@ -13,7 +13,7 @@ Sooooon
 - Fully responsive (mobile-first design)  
 - Fast and lightweight  
 - Export resume in PDF format  
-- Beginner friendly interface  
+- Beginner friendly interface     
   
 ## 🛠️ Tech Stack
 
