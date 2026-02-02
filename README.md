@@ -14,7 +14,7 @@ Sooooon
 - Fast and lightweight  
 - Export resume in PDF format  
 - Beginner friendly interface  
-
+  
 ## 🛠️ Tech Stack
 
 - HTML  
