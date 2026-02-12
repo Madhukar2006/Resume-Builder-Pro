@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { ResumeProvider } from '@/context/ResumeContext';
-import { ThemeProvider } from '@/context/ThemeContext';
 import { Navigation } from '@/components/Navigation';
 import { ResumeBuilder } from '@/components/ResumeBuilder';
 import { Hero } from '@/sections/Hero';
 import { Features } from '@/sections/Features';
 import { Templates } from '@/sections/Templates';
+import { ResumeTemplatesShowcase } from '@/sections/ResumeTemplatesShowcase';
 import { Footer } from '@/sections/Footer';
 import './App.css';
 
@@ -16,6 +16,7 @@ function LandingPage({ onCreateResume }: { onCreateResume: () => void }) {
       <div id="features">
         <Features />
       </div>
+      <ResumeTemplatesShowcase onSelectTemplate={onCreateResume} />
       <div id="templates">
         <Templates onSelectTemplate={onCreateResume} />
       </div>
@@ -33,19 +34,17 @@ function App() {
   };
 
   return (
-    <ThemeProvider>
-      <ResumeProvider>
-        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-          <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
-          
-          {currentPage === 'landing' ? (
-            <LandingPage onCreateResume={() => handleNavigate('builder')} />
-          ) : (
-            <ResumeBuilder />
-          )}
-        </div>
-      </ResumeProvider>
-    </ThemeProvider>
+    <ResumeProvider>
+      <div className="min-h-screen bg-white">
+        <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
+        
+        {currentPage === 'landing' ? (
+          <LandingPage onCreateResume={() => handleNavigate('builder')} />
+        ) : (
+          <ResumeBuilder onBack={() => handleNavigate('landing')} />
+        )}
+      </div>
+    </ResumeProvider>
   );
 }
 
