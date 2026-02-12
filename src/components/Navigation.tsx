@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { useTheme } from '@/context/ThemeContext';
-import { FileText, Menu, X, Sparkles, Sun, Moon } from 'lucide-react';
+import { FileText, Menu, X, Sparkles } from 'lucide-react';
 
 interface NavigationProps {
   currentPage: 'landing' | 'builder';
@@ -9,7 +8,6 @@ interface NavigationProps {
 
 export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   const navLinks = [
     { label: 'Home', page: 'landing' as const },
@@ -31,7 +29,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
   if (currentPage === 'builder') {
     return (
-      <nav className="glass-header px-4 py-3 flex items-center justify-between">
+      <nav className="bg-white/90 backdrop-blur-xl border-b border-gray-200/50 px-4 py-3 flex items-center justify-between shadow-sm">
         <button
           onClick={() => onNavigate('landing')}
           className="flex items-center gap-2 hover:opacity-80 transition-opacity"
@@ -39,12 +37,12 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/30">
             <FileText className="w-4 h-4 text-white" />
           </div>
-          <span className="font-bold text-gray-900 dark:text-white">Resume Builder Pro</span>
+          <span className="font-bold text-gray-900">Resume Builder Pro</span>
         </button>
         
         <button
           onClick={() => onNavigate('landing')}
-          className="text-sm text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+          className="text-sm text-gray-600 hover:text-gray-900 transition-colors px-4 py-2 rounded-lg hover:bg-gray-100"
         >
           Exit to Home
         </button>
@@ -53,7 +51,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-header">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -64,7 +62,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/30">
               <FileText className="w-5 h-5 text-white" />
             </div>
-            <span className="font-bold text-gray-900 dark:text-white hidden sm:block">Resume Builder Pro</span>
+            <span className="font-bold text-gray-900 hidden sm:block">Resume Builder Pro</span>
           </button>
 
           {/* Desktop Navigation */}
@@ -73,65 +71,40 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
               <button
                 key={link.label}
                 onClick={() => handleNavClick(link.page, link.section)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                   link.highlight
-                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg hover:shadow-blue-500/30 flex items-center gap-1.5'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
+                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg hover:shadow-blue-500/30 hover:scale-105 flex items-center gap-1.5'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                 }`}
               >
                 {link.highlight && <Sparkles className="w-3.5 h-3.5" />}
                 {link.label}
               </button>
             ))}
-            
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="ml-2 p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-              title={theme === 'light' ? 'Switch to Dark' : 'Switch to Light'}
-            >
-              {theme === 'light' ? (
-                <Moon className="w-4 h-4 text-gray-600" />
-              ) : (
-                <Sun className="w-4 h-4 text-yellow-400" />
-              )}
-            </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 md:hidden">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800"
-            >
-              {theme === 'light' ? (
-                <Moon className="w-4 h-4 text-gray-600" />
-              ) : (
-                <Sun className="w-4 h-4 text-yellow-400" />
-              )}
-            </button>
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
-            >
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+          >
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden glass-header border-t border-gray-200 dark:border-gray-700">
+        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-200/50 shadow-lg">
           <div className="px-4 py-3 space-y-1">
             {navLinks.map((link) => (
               <button
                 key={link.label}
                 onClick={() => handleNavClick(link.page, link.section)}
-                className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                className={`w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                   link.highlight
                     ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white flex items-center gap-2'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                 }`}
               >
                 {link.highlight && <Sparkles className="w-4 h-4" />}
